@@ -18,7 +18,7 @@ class Cat < ActiveRecord::Base
 
   validates :age, numericality: true
   validates :color, inclusion: { in: CAT_COLORS,
-      message: "%{color} is not in %{CAT_COLORS}" }
-  validates :sex, inclusion: { in: ["M", "F"], message: "%{sex} not valid" }
+      message: "%{value} is not in #{CAT_COLORS}" }
+  validates :sex, inclusion: { in: ["M", "F"], message: "%{value} not valid" }
   validates :age, :color, :sex, :name, presence: true
 end
