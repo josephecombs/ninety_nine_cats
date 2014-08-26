@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20140826165059) do
   create_table "cats", force: true do |t|
     t.string   "name",        null: false
     t.integer  "age",         null: false
-    t.string   "birth_date"
+    t.date     "birth_date"
     t.string   "color",       null: false
     t.string   "sex",         null: false
     t.text     "description"

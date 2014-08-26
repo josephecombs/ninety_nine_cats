@@ -12,7 +12,9 @@ class CatsController < ApplicationController
     render :show
   end
   
-  def new 
+  def new
+    @cat = Cat.new
+    # @cat = Cat.new(name: "", age: 0, sex: "M", color: :orange)
     render :new
   end
   
@@ -22,8 +24,8 @@ class CatsController < ApplicationController
   end
   
   def edit
-    #GET
-    # render form to edit current cat (found with params[:id])
+    @cat = Cat.find(params[:id])
+    render :edit
   end
   
   def update 

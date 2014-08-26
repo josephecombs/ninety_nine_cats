@@ -20,7 +20,7 @@
 #  updated_at  :datetime
 
 
-Cat.create!(name: "Mr. Freckles", age: 1, birth_date: "Jan 1", color: :black, sex: "M")
-Cat.create!(name: "Mrs. Freckles", age: 2, birth_date: "Jan 1", color: :white, sex: "F")
-Cat.create!(name: "Muffin", age: 3, birth_date: "Aug 1", color: :grey, sex: "M")
-Cat.create!(name: "Peach", age: 43, birth_date: "Jul 1", color: :orange, sex: "F")
+Cat.create!(name: "Mr. Freckles", age: 1, birth_date: "2013-04-13", color: :black, sex: "M")
+Cat.create!(name: "Mrs. Freckles", age: 2, birth_date: "2012-02-19", color: :white, sex: "F")
+Cat.create!(name: "Muffin", age: 3, birth_date: "2011-06-30", color: :grey, sex: "M")
+Cat.create!(name: "Laney", age: 10, birth_date: "2004-03-22", color: :orange, sex: "F")

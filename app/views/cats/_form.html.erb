@@ -1,0 +1,54 @@
+<% action_url = @cat.persisted? ? cat_url(@cat) : cats_url %>
+<% form_method = @cat.persisted? ? "PATCH" : "POST" %>
+<% submit_text = @cat.persisted? ? "Update Cat!" : "Create Cat!" %>
+
+<form action="<%= action_url %>" method="POST">
+  <input type="hidden" name="_method" value="<%= form_method %>">
+  
+  <label for="cat_name">Cat name</label>
+  <input type="text" name="cat[name]" id="cat_name" value="<%=@cat.name %>">
+  <br>
+  <label for="cat_age">Cat age</label>
+  <input type="text" name="cat[age]" id="cat_age" value="<%=@cat.age %>">
+  <br>
+  
+  <label for="cat_color">color</label>
+  <select name="cat[color]" id="cat_color", default>
+    <option value='%<@cat.color>'><%= @cat.color %></option>
+    <option value ='black'>Black</option>
+    <option value ='white'>White</option>
+    <option value ='orange'>Orange</option>
+    <option value ='grey'>Grey</option>
+  </select>
+  <br>
+  
+  <label for="cat_sex">Cat sex</label>
+    <% if @cat.sex == "F" %>
+      <input type="radio" name="cat[sex]" id="cat_sex_female" value="F" checked>
+      <label for="cat_sex_female">Female</label>
+      <input type="radio" name="cat[sex]" id="cat_sex_male" value="M">
+      <label for="cat_sex_male">Male</label>
+    <% elsif @cat.sex == "M" %>
+      <input type="radio" name="cat[sex]" id="cat_sex_female" value="F">
+      <label for="cat_sex_female">Female</label>
+      <input type="radio" name="cat[sex]" id="cat_sex_male" value="M" checked>
+      <label for="cat_sex_male">Male</label>
+    <% else %>
+      <input type="radio" name="cat[sex]" id="cat_sex_female" value="F">
+      <label for="cat_sex_female">Female</label>
+      <input type="radio" name="cat[sex]" id="cat_sex_male" value="M">
+      <label for="cat_sex_male">Male</label>
+    <% end %>
+  <br>
+  
+  <label for="cat_birth_date">Birth date</label>
+  <input type="date" name=cat[birth_date] id ="cat_birth_date">
+  <br>
+  
+  <label for="cat_description">Cat description</label>
+  <input type="textarea" name = "cat[description]" id ="cat_description" value="<%= @cat.description %>">
+  
+  <br>
+
+  <input type="submit" value="<%= submit_text %>">
+</form>
