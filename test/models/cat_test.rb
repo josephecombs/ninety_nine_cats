@@ -5,7 +5,7 @@
 #  id          :integer          not null, primary key
 #  name        :string(255)      not null
 #  age         :integer          not null
-#  birth_date  :string(255)
+#  birth_date  :date
 #  color       :string(255)      not null
 #  sex         :string(255)      not null
 #  description :text
