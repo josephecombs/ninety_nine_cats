@@ -14,8 +14,8 @@ class CatsController < ApplicationController
   
   def new
     @cat = Cat.new
-    # @cat = Cat.new(name: "", age: 0, sex: "M", color: :orange)
-    render :new
+     # @cat = Cat.new(name: "", age: 0, sex: "M", color: :orange)
+     render :new
   end
   
   def create

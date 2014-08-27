@@ -20,14 +20,23 @@ class CatRentalRequest < ActiveRecord::Base
   validate :outside_approved_requests
   
   def approve!
-    status = "APPROVED"
+    self.status = "APPROVED"
+    if self.save
+      overlapping_requests.each do |request|
+        request.status = "DENIED"
+        request.save!
+      end
+    end
+  end
+
+  def deny!
+    self.status = "DENIED"
     self.save
   end
   
-  belongs_to(:cat)
+  belongs_to(:cat)  
   
-  
-  private
+  # private
   def overlapping_requests
     # CatRentalRequest.select("")
     # select all CatRentalRequests where start_date between start_date and and end_date or end_date between start_date and end_date and cat_id == cat_id
@@ -38,10 +47,11 @@ class CatRentalRequest < ActiveRecord::Base
          :my_end_date BETWEEN start_date AND end_date) OR
         (start_date BETWEEN :my_start_date AND :my_end_date OR
           end_date BETWEEN :my_start_date AND :my_end_date
-        )
-      )
+        ) 
+      ) AND id != :id
     SQL
     params = {
+      id: self.id,
       cat_id: self.cat_id,
       my_start_date: self.start_date,
       my_end_date: self.end_date
@@ -54,7 +64,7 @@ class CatRentalRequest < ActiveRecord::Base
   end
   
   def outside_approved_requests
-    if overlapping_approved_requests.exists?
+    if overlapping_approved_requests.exists? && self.status != "DENIED"
       errors[:status] << "overlapping approved request"  
     end
   end

@@ -8,9 +8,7 @@ class CatRentalRequestsController < ApplicationController
   def create
     @cat_rental_request = CatRentalRequest.new(cat_rental_request_params)
     @cat_rental_request.status ||= "PENDING"
-    p 'this is cat rental request'
-    p @cat_rental_request
-    puts puts
+
     if @cat_rental_request.save
       #redirect to cat requests if valid
       redirect_to cat_url(@cat_rental_request.cat_id)
@@ -18,6 +16,18 @@ class CatRentalRequestsController < ApplicationController
       #redirect if not valid
       render :new
     end
+  end
+  
+  def approve
+    @cat_rental_request = CatRentalRequest.find(params[:id])
+    @cat_rental_request.approve!
+    redirect_to cat_url(CatRentalRequest.find(params[:id]).cat_id)
+  end
+  
+  def deny
+    @cat_rental_request = CatRentalRequest.find(params[:id])
+    @cat_rental_request.deny!
+    redirect_to cat_url(CatRentalRequest.find(params[:id]).cat_id)
   end
   
   def cat_rental_request_params
