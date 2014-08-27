@@ -32,6 +32,11 @@
 #
 
 
+User.create!(user_name: "kyle", password: "smith")
+User.create!(user_name: "joe", password: "combs")
+
+
+
 Cat.create!(name: "Mr. Freckles", age: 1, birth_date: "2013-04-13", color: "black", sex: "M")
 Cat.create!(name: "Mrs. Freckles", age: 2, birth_date: "2012-02-19", color: "white", sex: "F")
 Cat.create!(name: "Muffin", age: 3, birth_date: "2011-06-30", color: "grey", sex: "M")
