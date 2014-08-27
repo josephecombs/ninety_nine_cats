@@ -12,11 +12,20 @@
 #
 
 class CatRentalRequest < ActiveRecord::Base
+
   RENTAL_STATUSES = ["APPROVED", "PENDING", "DENIED"]
   
   validates :cat_id, :start_date, :end_date, :status, presence: true
   validates :status, inclusion: { in: RENTAL_STATUSES, message: "not a valid status"}
   validate :outside_approved_requests
+  
+  def approve!
+    status = "APPROVED"
+    self.save
+  end
+  
+  belongs_to(:cat)
+  
   
   private
   def overlapping_requests

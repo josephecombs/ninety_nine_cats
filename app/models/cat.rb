@@ -22,4 +22,10 @@ class Cat < ActiveRecord::Base
       message: "%{value} is not in #{CAT_COLORS}" }
   validates :sex, inclusion: { in: SEXES, message: "%{value} not valid" }
   validates :age, :color, :sex, :name, presence: true
+  
+  has_many(
+  :rental_requests,
+  class_name: 'CatRentalRequest',
+  dependent: :destroy
+  )
 end

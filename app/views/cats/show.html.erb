@@ -10,4 +10,10 @@
           <td><%= @cat.age %></td>
       </tr>
   </table>
+  <br>
+  
+  <% @cat.rental_requests.order(:start_date).each do |rr| %>
+    <li>start date: <%= rr.start_date %> end date: <%= rr.end_date %> status: <%= rr.status %></li>
+  <% end %>
+  <br>
 </ul>
