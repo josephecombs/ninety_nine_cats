@@ -5,11 +5,15 @@
       <tr>
           <th>Cat Name</th>
           <th>Cat Age</th>
+          <th>Cat's Owner</th>
+          <th>Cat's URL</th>
       </tr>
       <% @cats.each do |cat| %>
       <tr>
           <td><%= cat.name %> </td>
           <td><%= cat.age %></td>
+          <td><%= cat.user_id %></td>
+          <!-- <td><%= cat_url %></td> -->
       </tr>
       <% end %>
 

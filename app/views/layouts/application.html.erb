@@ -4,7 +4,12 @@
 <h1><%= current_user.user_name %></h1>
 <form action="\session" method="POST">
   <input type="hidden" name="_method" value="DELETE">
+
   <input type="submit" value="Logout">
+  <input
+      type="hidden"
+      name="authenticity_token"
+      value="<%= form_authenticity_token %>">
 </form>
 <% else %>
 <h1><a href="/session/new">Login</a></h1>

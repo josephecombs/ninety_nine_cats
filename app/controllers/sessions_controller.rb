@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
-
+  before_action :require_no_user!, only: [:create, :new]
+  
   def create
     user = User.find_by_credentials(params[:user][:user_name], params[:user][:password])
     unless user.nil?
@@ -14,6 +15,6 @@ class SessionsController < ApplicationController
   def destroy
     current_user.session_token = nil
     session[:session_token] = nil
-    redirect_to cats_url
+    redirect_to cats_url  
   end
 end

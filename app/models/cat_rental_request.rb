@@ -19,6 +19,13 @@ class CatRentalRequest < ActiveRecord::Base
   validates :status, inclusion: { in: RENTAL_STATUSES, message: "not a valid status"}
   validate :outside_approved_requests
   
+  belongs_to(
+    :requester,
+    class_name: 'User',
+    foreign_key: :user_id,
+    primary_key: :id
+  )
+  
   def approve!
     self.status = "APPROVED"
     if self.save

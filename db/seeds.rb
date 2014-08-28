@@ -37,16 +37,17 @@ User.create!(user_name: "joe", password: "combs")
 
 
 
-Cat.create!(name: "Mr. Freckles", age: 1, birth_date: "2013-04-13", color: "black", sex: "M")
-Cat.create!(name: "Mrs. Freckles", age: 2, birth_date: "2012-02-19", color: "white", sex: "F")
-Cat.create!(name: "Muffin", age: 3, birth_date: "2011-06-30", color: "grey", sex: "M")
-Cat.create!(name: "Laney", age: 10, birth_date: "2004-03-22", color: "orange", sex: "F")
+
+Cat.create!(name: "Mr. Freckles", age: 1, birth_date: "2013-04-13", color: "black", sex: "M", user_id: 1)
+Cat.create!(name: "Mrs. Freckles", age: 2, birth_date: "2012-02-19", color: "white", sex: "F", user_id: 1)
+Cat.create!(name: "Muffin", age: 3, birth_date: "2011-06-30", color: "grey", sex: "M", user_id: 2)
+Cat.create!(name: "Laney", age: 10, birth_date: "2004-03-22", color: "orange", sex: "F", user_id: 2)
 
 
-CatRentalRequest.create!(cat_id: 1, start_date: "2013-03-22", end_date: "2014-03-22", status: "PENDING")
-CatRentalRequest.create!(cat_id: 2, start_date: "2010-03-22", end_date: "2014-03-22", status: "PENDING")
-CatRentalRequest.create!(cat_id: 3, start_date: "2004-03-22", end_date: "2009-03-22", status: "PENDING")
-CatRentalRequest.create!(cat_id: 2, start_date: "2004-03-22", end_date: "2011-03-22", status: "PENDING")
-CatRentalRequest.create!(cat_id: 1, start_date: "2007-05-11", end_date: "2008-04-01", status: "PENDING")
-CatRentalRequest.create!(cat_id: 1, start_date: "2011-01-03", end_date: "2011-12-02", status: "PENDING")
-CatRentalRequest.create!(cat_id: 4, start_date: "2007-03-22", end_date: "2012-03-22", status: "PENDING")
+CatRentalRequest.create!(cat_id: 1, start_date: "2013-03-22", end_date: "2014-03-22", status: "PENDING", user_id: 1)
+CatRentalRequest.create!(cat_id: 2, start_date: "2010-03-22", end_date: "2014-03-22", status: "PENDING", user_id: 1)
+CatRentalRequest.create!(cat_id: 3, start_date: "2004-03-22", end_date: "2009-03-22", status: "PENDING", user_id: 1)
+CatRentalRequest.create!(cat_id: 2, start_date: "2004-03-22", end_date: "2011-03-22", status: "PENDING", user_id: 2)
+CatRentalRequest.create!(cat_id: 1, start_date: "2007-05-11", end_date: "2008-04-01", status: "PENDING", user_id: 2)
+CatRentalRequest.create!(cat_id: 1, start_date: "2011-01-03", end_date: "2011-12-02", status: "PENDING", user_id: 2)
+CatRentalRequest.create!(cat_id: 4, start_date: "2007-03-22", end_date: "2012-03-22", status: "PENDING", user_id: 2)

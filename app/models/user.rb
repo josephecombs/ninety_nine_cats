@@ -2,6 +2,14 @@ require 'securerandom'
 class User < ActiveRecord::Base
   validates :user_name, :password_digest, presence: true
   # validates :session_token
+  
+  has_many :cats
+  has_many(
+    :requests,
+    class_name: 'CatRentalRequest',
+    foreign_key: :user_id,
+    primary_key: :id
+  )
 
   def reset_session_token!
     self.session_token = SecureRandom.urlsafe_base64

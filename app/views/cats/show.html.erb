@@ -14,12 +14,23 @@
   
   <% @cat.rental_requests.order(:start_date).each do |rr| %>
     <li>start date: <%= rr.start_date %> end date: <%= rr.end_date %> status: <%= rr.status %>
-      <form action="\cat_rental_requests\<%= rr.id %>\deny" method="POST">
-        <input type="submit" value="Deny">
+      <% if rr.cat.user_id == current_user.id %>
+        <form action="\cat_rental_requests\<%= rr.id %>\deny" method="POST">
+          <input type="submit" value="Deny">
+          <input
+              type="hidden"
+              name="authenticity_token"
+              value="<%= form_authenticity_token %>">
+        </form>
+        <form action="\cat_rental_requests\<%= rr.id %>\approve" method="POST">
+          <input type="submit" value="Approve">
+          <input
+              type="hidden"
+              name="authenticity_token"
+              value="<%= form_authenticity_token %>">
       </form>
-      <form action="\cat_rental_requests\<%= rr.id %>\approve" method="POST">
-        <input type="submit" value="Approve">
-      </form>
+      <% end %>
+    
     </li>
   <% end %>
   <br>

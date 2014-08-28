@@ -1,6 +1,10 @@
 
 <form action="http://localhost:3000/cat_rental_requests" method="POST">
-  
+  <input
+      type="hidden"
+      name="authenticity_token"
+      value="<%= form_authenticity_token %>">
+      
   <label for="cat_id">cat</label>
   
   <select name="cat_rental_request[cat_id]" id="cat_color", default>
